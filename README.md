@@ -17,7 +17,7 @@ in the response variable.
 
 ## Installation
 
-Through [CRAN](https://cran.r-project.org/web/packages/hier.part/)
+Through [CRAN](https://cran.r-project.org/package=hier.part)
 or:
 
 ``` r
@@ -39,10 +39,10 @@ devtools::install_github("cjbwalsh/hier.part")
     # predictor explaining amphipod occurrence (having elsewhere tested 
     # that the model predicts occurrence well).
     
-    rand.hp(amphipod$australis, env1, fam = "binomial", 
+    rand.hp(amphipod$australis, env, fam = "binomial", 
             gof = "logLik", num.reps = 999)$Iprobs
 
-    #Z-scores suggest that fconn, fimp (imperviousness) and unseal
-    #(unsealed road density) are all important' independent predictors
-    #of amphipod abundance.(999 randomizations takes a few minutes).  
+    #Z-scores suggest that fconn and fimp (imperviousness) are both
+    #important' independent predictors of amphipod abundance. 
+    #(999 randomizations takes a few minutes).  
 ```

@@ -12,4 +12,4 @@ void attribute_visible R_init_hierpart(DllInfo *dll)
     R_registerRoutines(dll, cMethods, NULL, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
     R_forceSymbols(dll, TRUE);
-  };
+  }
