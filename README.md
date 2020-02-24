@@ -1,0 +1,5 @@
+# hier.part
+
+The hier.part package for R is an implementation of the hierarchical partitioning algorithm published by Chevan and Sutherland (1991: The American Statistician 45: 90).  The function hier.part() partitions the independent and joint contributions of each variable in a multivariate data set to a linear regression by hierarchical decomposition of goodness-of-fit measures of regressions.  It uses goodness-of-fit measures for the entire hierarchy of models based on N variables (i.e., model (1), (2), ..., (N), (1,2), ..., (1,N), ..., (1,2,3,...,N)).   The function rand.hp() performs a randomization test that permits the quantification of relative ‘effect sizes’ associated with the partitioning.
+
+Version 1.0-5 (not yet submitted to CRAN) corrects a number of minor coding irregularities as required by CRAN. It also expands the model families that can be used to include beta regression (using betareg from the betareg package) and ordered logistic or probit regression (using polr from the MASS package).
