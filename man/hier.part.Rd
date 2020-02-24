@@ -21,14 +21,14 @@ hier.part(y, xcan,
   }
 
   \item{xcan}{
-    a dataframe containing the n predictors
+    a data.frame containing the n predictors
   }
 
   \item{family}{
     a character string naming a family function used by \code{stats::glm}
     (See \code{stats::family} for details of family functions). Valid values
     are "gaussian", "binomial", "Gamma", "inverse.gaussian", "poisson",
-    "quasi", "quasibinomial","quasipossion". Alternatively a value of "beta"
+    "quasi", "quasibinomial","quasipoisson". Alternatively a value of "beta"
     will use the \code{betareg::betareg} beta regression model, or "ordinal"
     will use the \code{MASS::polr} ordered logistic or probit regression.
     For these last two options, a value for the link argument is required.

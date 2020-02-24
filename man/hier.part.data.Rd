@@ -28,10 +28,11 @@
 
     amphipod.txt
 
-    Presence-absence data for a stream-dwelling amphipod (australis) in
-    58 sites, with four catchment variables (fimp, imperviousness\eqn{^{0.25}};
-    fconn, drainage connection\eqn{^{0.25}}; densep, density of septic
-    tanks; unseal, unsealed road density).  Data from Walsh et al. (2004).
+    Presence-absence data for a stream-dwelling amphipod (Austrogammarus
+    australis) in 58 sites, with four catchment variables (fimp,
+    imperviousness\eqn{^{0.25}};fconn, drainage connection\eqn{^{0.25}};
+    densep, density of septic tanks; unseal, unsealed road density).
+    Data from Walsh et al. (2004).
 
     chevan.txt
 
