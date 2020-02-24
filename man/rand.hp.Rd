@@ -50,7 +50,7 @@ the randomized dataset.
 \value{
   a list containing
   \item{Irands}{
-    matrix of num.reps + 1  rows of I values for each dependent
+    matrix of num.reps + 1  rows of I values for each predictor
     variable.  The first row contains the observed I values and the
     remaining num.reps rows contains the I values returned for each
     randomization.

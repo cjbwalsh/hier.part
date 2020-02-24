@@ -5,7 +5,7 @@
 }
 \description{
   Calculates goodness of fit measures for regressions of a single
-  dependent variable to all combinations of N independent variables
+  response variable to all combinations of N predictor variables
 }
 \usage{
 all.regs(y, xcan,
@@ -18,11 +18,11 @@ all.regs(y, xcan,
 }
 \arguments{
   \item{y}{
-    a vector containing the dependent variables
+    a vector containing the response variable
   }
 
   \item{xcan}{
-    a dataframe containing the n independent variables
+    a dataframe containing the n predictors
   }
 
   \item{family}{
@@ -50,7 +50,7 @@ all.regs(y, xcan,
 
   \item{print.vars}{
     if FALSE, the function returns a vector of goodness-of-fit measures. If
-    TRUE, a data frame is returned with first column listing variable
+    TRUE, a data frame is returned with first column listing predictor variable
     combinations and the second column listing goodness-of-fit measures.
     }
 
@@ -61,7 +61,7 @@ all.regs(y, xcan,
 
 \details{
 This function calculates goodness of fit measures for the entire
-hierarchy of models using all combinations of N dependent variables, and
+hierarchy of models using all combinations of N predictors, and
 returns them as an ordered list ready for input into the function
 \code{partition}.
 }
@@ -69,9 +69,9 @@ returns them as an ordered list ready for input into the function
 \value{
   \item{gfs}{
     If print.vars is FALSE, a vector of goodness of fit measures for all
-    combinations of independent varaiables in the hierarchy or, if
+    combinations of predictors in the hierarchy or, if
     print.vars is TRUE, a data frame listing all combinations of
-    independent variables in the first column in ascending order, and
+    predictor variables in the first column in ascending order, and
     the corresponding goodness of fit measure for the model using those
     variables
   }

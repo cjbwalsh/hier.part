@@ -3,16 +3,15 @@ Type: Package
 Title: Hierarchical Partitioning
 Description: Partitioning of the independent and joint contributions of each
     variable in a multivariate data set, to a linear regression by hierarchical
-    decomposition of goodness-of-fit measures of regressions using all 
-    combinations of variables in the data set. (i.e., model (1), (2), ..., (N),
-		(1,2), ..., (1,N), ..., (1,2,3,...,N)).   A randomization test permits
-    the quantification of relative ‘effect sizes’ associated with the 
-    partitioning.
+    decomposition of goodness-of-fit measures of regressions using all subsets 
+    of predictors in the data set. (i.e., model (1), (2), ..., (N), (1,2), ...,
+		(1,N), ..., (1,2,3,...,N)). A Z-score based estimate of the 'importance' of
+		each predictor is provided by using a randomisation test.
 Version: 1.0-5
 Authors@R: c(person("Chris", "Walsh", role = c("aut","cre"),
              email = "cwalsh@unimelb.edu.au"),
              person("Ralph", "Mac Nally", role = "aut",
-             email = "Ralph.MacNally@canberra.edu.au"))
+             email = "Ralph.MacNally@gmail.com"))
 Imports: 
     gtools, 
     betareg, 
