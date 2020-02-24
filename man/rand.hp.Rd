@@ -8,8 +8,14 @@
   \code{hier.part} num.reps times
 }
 \usage{
- rand.hp(y, xcan, family = "gaussian", gof = "RMSPE",
-                    num.reps = 100)
+ rand.hp(y, xcan,
+        family = c("gaussian", "binomial", "Gamma", "inverse.gaussian",
+                   "poisson", "quasi", "quasibinomial", "quasipoisson",
+                   "beta", "ordinal"),
+        link = c("logit", "probit", "cloglog", "cauchit", "loglog"),
+        gof = c("Rsqu", "RMSPE", "logLik"),
+        num.reps = 100,
+        ...)
 }
 \arguments{
   \item{y}{
@@ -21,18 +27,36 @@
   }
 
   \item{family}{
-    family argument of \code{glm}
+    a character string naming a family function used by \code{stats::glm}
+    (See \code{stats::family} for details of family functions). Valid values
+    are "gaussian", "binomial", "Gamma", "inverse.gaussian", "poisson",
+    "quasi", "quasibinomial","quasipossion". Alternatively a value of "beta"
+    will use the \code{betareg::betareg} beta regression model, or "ordinal"
+    will use the \code{MASS::polr} ordered logistic or probit regression.
+    For these last two options, a value for the link argument is required.
+  }
+
+  \item{link}{
+    character specification of the link function, only used if family =
+    "beta" or "ordinal".  For "beta", this argument equals the "link" argument
+    in \code{betareg::betareg}. For "ordinal", it equals the "method"
+    argument in \code{MASS::polr}, where "logit" = "logistic".
   }
 
   \item{gof}{
     Goodness-of-fit measure.  Currently "RMSPE", Root-mean-square
-    'Prediction' error, "NLL", Negative log Likelihood or "Rsqu",
-    R-squared
-  }
+    'prediction' error,  "logLik", Log-Likelihood or "Rsqu", R-squared.
+    R-squared is only applicable if family = "Gaussian".
+    }
 
   \item{num.reps}{
     Number of repeated randomizations
     }
+
+  \item{...}{
+    additional arguments to passed to \code{glm}, \code{betareg::betareg},
+    or \code{MASS::polr}
+     }
   }
 
 \details{

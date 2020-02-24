@@ -244,8 +244,13 @@ hier.part <- function(y, xcan,
     }
 }
 
-rand.hp <- function(y, xcan, family = "gaussian",
-                    gof = "RMSPE", num.reps = 100) {
+rand.hp <- function(y, xcan,
+                    family = c("gaussian", "binomial", "Gamma", "inverse.gaussian",
+                               "poisson", "quasi", "quasibinomial", "quasipoisson",
+                               "beta", "ordinal"),
+                    link = c("logit", "probit", "cloglog", "cauchit", "loglog"),
+                    gof = c("Rsqu", "RMSPE", "logLik"),
+                    num.reps = 100, ...) {
     cat("\nPlease wait: running", num.reps, "randomizations \n")
     ij <- hier.part(y, xcan, family = family, gof = gof, barplot = FALSE)$IJ
     var.names <- row.names(ij)
@@ -260,7 +265,7 @@ rand.hp <- function(y, xcan, family = "gaussian",
             xcan[, j] <- xcan[, j][o]
         }
         i.temp <- hier.part(y, xcan, family = family, gof = gof,
-                           barplot = FALSE)$IJ[, 1]
+                           barplot = FALSE, ...)$IJ[, 1]
         i.rands <- rbind(i.rands, t(i.temp))
     }
     # RMSPE is smaller for better fits: logLik and Rsqu the opposite

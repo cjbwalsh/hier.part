@@ -138,7 +138,7 @@ hier.part(y, xcan,
 
  \examples{
     #linear regression of log(electrical conductivity) in
-    #streams against seven independent variables
+    #streams against seven predictor variables
     #describing catchment characteristics (from
     #Hatt et al. 2004)
 
