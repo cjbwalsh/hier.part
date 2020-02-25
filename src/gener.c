@@ -14,19 +14,28 @@ Distributor(int N)
 
 {
 	int	i, j, bead, allset, subset, *locstore, psize, err;
-	char	*phrase;
+	char	*phrase, *phrase_t;
 
 	allset = N;
 
 	/* allocate space for 'phrase' */
 	/* & assign generous amount */
 	psize = (int)(10 * N);
+
 	if ((phrase = (char *) malloc (psize * sizeof(char)))
 	    == (char *) NULL)
 	{
 	  REprintf("bestreg:Distributor: allocation failed (%d)\n", N);
 	  /* exit(1); */
 	}
+
+	if ((phrase_t = (char *) malloc (psize * sizeof(char)))
+            == (char *) NULL)
+	{
+		REprintf("bestreg:Distributor: allocation failed (%d)\n", N);
+		/* exit(1); */
+	}
+
 
 	/* some work space for allnr_ to use */
 	if ((locstore = (int *) malloc (N * sizeof(int)))
@@ -41,14 +50,18 @@ Distributor(int N)
 	    F77_CALL(allnr)(&allset, &subset, locstore, &err);
 	    for (i = 0; i < combos; i++)
 	    {
-		/* clear string index */
+		/* clear string indices */
 		for (bead = 0; bead < psize; bead++)
+		{
 		    phrase[bead] = '\0';
+	            phrase_t[bead] = '\0';
+		}
 
 		for (j = 1; j <= subset; j++)
 		{
 		    d[subset].m[i + 1].pt[j] = Iarray[i][j];
-		  sprintf(phrase, "%s%d", phrase, Iarray[i][j]);
+	            sprintf(phrase_t, "%s", phrase);
+		    sprintf(phrase, "%s%d", phrase_t, Iarray[i][j]);
 		}
 	      sprintf(d[subset].m[i + 1].idx, "%s", phrase);
 	    }
@@ -58,6 +71,7 @@ Distributor(int N)
 	/* deallocate malloced storage */
 	free(locstore);
 	free(phrase);
+	free(phrase_t);
 
 
 } /* Distributor() */
