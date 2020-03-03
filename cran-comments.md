@@ -1,3 +1,5 @@
+1.0-6 corrects some critical coding errors that were discovered after deployment of 1.0-5
+
 ## Test environments
 * local macOS Catalina 10.15.3, R 3.6.2 (2019-12-12)
 * local ubuntu 18.04, R 3.6.2 (2019-12-12)
