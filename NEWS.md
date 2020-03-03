@@ -4,6 +4,7 @@
 
 - more correctly handles datasets with missing values. Previous version potentially produced erroneous values for gof = "RMSPE".  Now for all model forms, observations with any missing values in y or xcan are deleted prior to analysis.
 
+- params, a list of parameters used in the analysis, added as a further output item added to hier.part function
 
 # hier.part Version 1.0-5
 

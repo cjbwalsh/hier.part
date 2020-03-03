@@ -114,13 +114,13 @@ all.regs <- function(y, xcan,
     missing <- is.na(apply(xcan,1,FUN = sum))
     xcan <- xcan[!missing,]
     y <- y[!missing]
-    warning(paste(sum(missing), "observations deleted due to missingness in xcan"), call. = FALSE)
+    warning(paste(sum(missing), "observations deleted due to missingness in xcan\n"), call. = FALSE)
   }
   if (sum(is.na(y)) > 0) {
     missing <- is.na(y)
     xcan <- xcan[!missing,]
     y <- y[!missing]
-    warning(paste(sum(missing), "observations deleted due to missingness in y"), call. = FALSE)
+    warning(paste(sum(missing), "observations deleted due to missingness in y\n"), call. = FALSE)
   }
   if (!family %in% c("gaussian", "binomial", "Gamma", "inverse.gaussian",
                       "poisson", "quasi", "quasibinomial","quasipoisson",
@@ -160,7 +160,7 @@ all.regs <- function(y, xcan,
             gfs <- sqrt(sum((stats::glm(y ~ 1, family = family, ...)$fitted.values - y)^2))
         }
           }
-       if (gof == "logLik")
+       if (gof == "logLik") {
         if (family == "beta") {
             gfs <- as.vector(stats::logLik(betareg::betareg(y ~ 1, family = family,
                                          link = link, ...)))
@@ -174,6 +174,7 @@ all.regs <- function(y, xcan,
         if (!family %in% c("beta","ordinal")) {
             gfs <- as.vector(stats::logLik(stats::glm(y ~ 1, family = family, ...)))
         }
+         }
         if (gof == "Rsqu")
             gfs <- 0
     }
@@ -275,7 +276,11 @@ hier.part <- function(y, xcan,
             barplot(t(hp$I.perc), col = c(1), ylim = c(ymin, ymax),
                     ylab = "% Independent effects (%I)")
         }
-        list(gfs = gfs, IJ = hp$IJ, I.perc = hp$I.perc)
+        params <- list(full.model = paste("y ~", paste(names(xcan), collapse = " + ")),
+                       family = family,
+                       link = ifelse(family %in% c("beta","ordinal"), link, "default"),
+                       gof = gof)
+        list(gfs = gfs, IJ = hp$IJ, I.perc = hp$I.perc, params = params)
     }
 }
 
