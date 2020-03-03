@@ -52,9 +52,9 @@ current.model <- function(y, current.comb, xcan,
     xs[n.comb] <- names(comb.data)[n.comb]
     xss <- paste(xs, collapse = " ", sep = "")
     formu <- stats::formula(paste(depv, "~", xss, sep = ""))
-    if (gof == "RMSPE")
+    if (gof == "RMSPE") {
       if (family == "beta") {
-          gf <- sqrt(sum((betareg(formu, family = family,
+          gf <- sqrt(sum((betareg::betareg(formu, family = family,
                                      link = link, ...)$fitted.values - y)^2))
         }
       if (family == "ordinal") {
@@ -67,9 +67,10 @@ current.model <- function(y, current.comb, xcan,
           gf <- sqrt(sum((stats::glm(formu, data = data,
                             family = family, ...)$fitted.values - y)^2))
        }
+      }
     if (gof == "logLik") {
        if (family == "beta") {
-         gf <- as.vector(stats::logLik(betareg(formu, data = data,
+         gf <- as.vector(stats::logLik(betareg::betareg(formu, data = data,
                                         family = family, link = link, ...)))
             }
        if (family == "ordinal") {
@@ -124,7 +125,7 @@ all.regs <- function(y, xcan,
     } else {
       if (gof == "RMSPE") {
         if (family == "beta") {
-            gfs <- sqrt(sum((betareg(y ~ 1, family = family,
+            gfs <- sqrt(sum((betareg::betareg(y ~ 1, family = family,
                                      link = link, ...)$fitted.values - y)^2))
             }
         if (family == "ordinal") {
@@ -139,7 +140,7 @@ all.regs <- function(y, xcan,
           }
        if (gof == "logLik")
         if (family == "beta") {
-            gfs <- as.vector(stats::logLik(betareg(y ~ 1, family = family,
+            gfs <- as.vector(stats::logLik(betareg::betareg(y ~ 1, family = family,
                                          link = link, ...)))
             }
         if (family == "ordinal") {
