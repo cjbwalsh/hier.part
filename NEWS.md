@@ -1,6 +1,11 @@
-# hier.part Version 1.0-5
+# hier.part Version 1.0-6
 
-This version:  
+- corrects an error in family selection in the current.model function, which caused potentially erroneous results for gof = "RMSPE".  
+
+- more correctly handles datasets with missing values. Previous version potentially produced erroneous values for gof = "RMSPE".  Now for all model forms, observations with any missing values in y or xcan are deleted prior to analysis.
+
+
+# hier.part Version 1.0-5
 
 - corrects a number of minor coding irregularities as required by CRAN.  
 
