@@ -2,9 +2,9 @@
 
 - corrects an error in family selection in the current.model function, which caused potentially erroneous results for gof = "RMSPE".  
 
-- more correctly handles datasets with missing values. Previous version potentially produced erroneous values for gof = "RMSPE".  Now for all model forms, observations with any missing values in y or xcan are deleted prior to analysis.
+- more correctly handles datasets with missing values. Previous version potentially produced erroneous values for gof = "RMSPE".  Now for all model forms, observations with any missing values in y or xcan are deleted prior to analysis (and a warning is given that the observations have been deleted)
 
-- params, a list of parameters used in the analysis, added as a further output item added to hier.part function
+- params, a list of parameters used in the analysis, added as a further output item added to the hier.part function
 
 # hier.part Version 1.0-5
 
