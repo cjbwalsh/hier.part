@@ -29,10 +29,16 @@ combos1 <- function(n) {
 }
 
 current.model <- function(y, current.comb, xcan,
+                          family = c("gaussian", "binomial", "Gamma",
+                                     "inverse.gaussian", "poisson","quasi",
+                                     "quasibinomial","quasipoisson","beta","ordinal"),
                           link = c("logit", "probit", "cloglog", "cauchit", "loglog"),
-                          family = "gaussian",
-                          gof = "Rsqu", ...) {
-    if (family != "gaussian" & gof == "Rsqu") {
+                          gof = c("Rsqu", "RMSPE", "logLik"),
+                           ...) {
+  if (length(family) > 1) family <- family[1]
+  if (length(link) > 1) link <- link[1]
+  if (length(gof) > 1) gof <- gof[1]
+  if (family != "gaussian" & gof == "Rsqu") {
         stop("R-squared is only appropriate if family = 'gaussian'", call. = FALSE)
     }
     comb.data <- data.frame(xcan[, current.comb])
@@ -86,18 +92,21 @@ current.model <- function(y, current.comb, xcan,
 all.regs <- function(y, xcan,
                      family = c("gaussian", "binomial", "Gamma",
                                 "inverse.gaussian", "poisson","quasi",
-                                "quasibinomial","quasipossion","beta","ordinal"),
+                                "quasibinomial","quasipoisson","beta","ordinal"),
                      link = c("logit", "probit", "cloglog", "cauchit", "loglog"),
                      gof = c("Rsqu", "RMSPE", "logLik"),
                      print.vars = FALSE, ...) {
-    if (!family %in% c("gaussian", "binomial", "Gamma", "inverse.gaussian",
-                      "poisson", "quasi", "quasibinomial","quasipossion",
+  if (length(family) > 1) family <- family[1]
+  if (length(link) > 1) link <- link[1]
+  if (length(gof) > 1) gof <- gof[1]
+  if (!family %in% c("gaussian", "binomial", "Gamma", "inverse.gaussian",
+                      "poisson", "quasi", "quasibinomial","quasipoisson",
                       "beta","ordinal")) {
         stop("The 'family' argument must equal one of 'gaussian', 'binomial',
               'Gamma', 'inverse.gaussian','poisson', 'quasi', 'quasibinomial',
-              'quasipossion', 'beta', or 'ordinal'", call. = FALSE)
+              'quasipoisson', 'beta', or 'ordinal'", call. = FALSE)
         }
-    if (family != "gaussian" & gof == "Rsqu") {
+  if (family != "gaussian" & gof == "Rsqu") {
         stop("The 'gof' argument can only equal R-squared
              if family = 'gaussian'", call. = FALSE)
     }
@@ -228,7 +237,10 @@ hier.part <- function(y, xcan,
                       gof = c("Rsqu", "RMSPE", "logLik"),
                       barplot = TRUE,
                       ...) {
-    pcan <- dim(xcan)[2]
+  if (length(family) > 1) family <- family[1]
+  if (length(link) > 1) link <- link[1]
+  if (length(gof) > 1) gof <- gof[1]
+  pcan <- dim(xcan)[2]
     if (pcan > 12)
         stop("Number of variables must be < 13 for current implementation",
              call. = FALSE) else {
@@ -251,7 +263,10 @@ rand.hp <- function(y, xcan,
                     link = c("logit", "probit", "cloglog", "cauchit", "loglog"),
                     gof = c("Rsqu", "RMSPE", "logLik"),
                     num.reps = 100, ...) {
-    cat("\nPlease wait: running", num.reps, "randomizations \n")
+  if (length(family) > 1) family <- family[1]
+  if (length(link) > 1) link <- link[1]
+  if (length(gof) > 1) gof <- gof[1]
+  cat("\nPlease wait: running", num.reps, "randomizations \n")
     ij <- hier.part(y, xcan, family = family, gof = gof, barplot = FALSE)$IJ
     var.names <- row.names(ij)
     i.rands <- data.frame(Obs = ij[, 1], row.names = var.names)
