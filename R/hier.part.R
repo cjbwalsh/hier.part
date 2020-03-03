@@ -38,6 +38,16 @@ current.model <- function(y, current.comb, xcan,
   if (length(family) > 1) family <- family[1]
   if (length(link) > 1) link <- link[1]
   if (length(gof) > 1) gof <- gof[1]
+  if (sum(is.na(xcan)) > 0) {
+    missing <- is.na(apply(xcan,1,FUN = sum))
+    xcan <- xcan[!missing,]
+    y <- y[!missing]
+  }
+  if (sum(is.na(y)) > 0) {
+    missing <- is.na(y)
+    xcan <- xcan[!missing,]
+    y <- y[!missing]
+  }
   if (family != "gaussian" & gof == "Rsqu") {
         stop("R-squared is only appropriate if family = 'gaussian'", call. = FALSE)
     }
@@ -100,6 +110,18 @@ all.regs <- function(y, xcan,
   if (length(family) > 1) family <- family[1]
   if (length(link) > 1) link <- link[1]
   if (length(gof) > 1) gof <- gof[1]
+  if (sum(is.na(xcan)) > 0) {
+    missing <- is.na(apply(xcan,1,FUN = sum))
+    xcan <- xcan[!missing,]
+    y <- y[!missing]
+    warning(paste(sum(missing), "observations deleted due to missingness in xcan"), call. = FALSE)
+  }
+  if (sum(is.na(y)) > 0) {
+    missing <- is.na(y)
+    xcan <- xcan[!missing,]
+    y <- y[!missing]
+    warning(paste(sum(missing), "observations deleted due to missingness in y"), call. = FALSE)
+  }
   if (!family %in% c("gaussian", "binomial", "Gamma", "inverse.gaussian",
                       "poisson", "quasi", "quasibinomial","quasipoisson",
                       "beta","ordinal")) {
