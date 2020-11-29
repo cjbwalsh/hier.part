@@ -17,6 +17,8 @@ in the response variable.
 
 The current version on CRAN is 1.0-6 (commit e7c9d4b68a).
 
+This development version is 1.0-7
+
 ## Installation
 
 Through [CRAN](https://cran.r-project.org/package=hier.part)
