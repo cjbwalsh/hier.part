@@ -11,7 +11,8 @@ hier.part(y, xcan,
           family = c("gaussian", "binomial", "Gamma", "inverse.gaussian",
                     "poisson", "quasi", "quasibinomial", "quasipoisson",
                     "beta", "ordinal"),
-          link = c("logit", "probit", "cloglog", "cauchit", "loglog"),
+          link = c("logit", "probit", "cloglog", "cauchit", "loglog",
+                             "identity","inverse","1/mu^2","log","sqrt"),
           gof = c("Rsqu", "RMSPE", "logLik"),
           barplot = TRUE, ...)
 }
@@ -35,10 +36,11 @@ hier.part(y, xcan,
   }
 
   \item{link}{
-    character specification of the link function, only used if family =
-    "beta" or "ordinal".  For "beta", this argument equals the "link" argument
-    in \code{betareg::betareg}. For "ordinal", it equals the "method"
-    argument in \code{MASS::polr}, where "logit" = "logistic".
+    character specification of the link function. For "beta", this argument 
+    equals the "link" argument in \code{betareg::betareg}. For "ordinal", it 
+    equals the "method" argument in \code{MASS::polr}, where "logit" = "logistic". 
+    For other families, \code{stats::glm} is used and link values are limited
+    to the valid values for family (See \code{stats::family}).
   }
 
   \item{gof}{

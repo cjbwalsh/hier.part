@@ -1,3 +1,7 @@
+# hier.part Version 1.0-7
+
+- adds complete suite of link options for glm and allows their implementation in calls to glm.  
+
 # hier.part Version 1.0-6
 
 - corrects an error in family selection in the current.model function, which caused potentially erroneous results for gof = "RMSPE".  
