@@ -9,10 +9,10 @@
 }
 \usage{
  rand.hp(y, xcan,
-        family = c("gaussian", "binomial", "Gamma", "inverse.gaussian",
+        fam = c("gaussian", "binomial", "Gamma", "inverse.gaussian",
                    "poisson", "quasi", "quasibinomial", "quasipoisson",
                    "beta", "ordinal"),
-          link = c("logit", "probit", "cloglog", "cauchit", "loglog",
+        link = c("logit", "probit", "cloglog", "cauchit", "loglog",
                              "identity","inverse","1/mu^2","log","sqrt"),
         gof = c("Rsqu", "RMSPE", "logLik"),
         num.reps = 100,

@@ -8,7 +8,7 @@
 }
 \usage{
 hier.part(y, xcan,
-          family = c("gaussian", "binomial", "Gamma", "inverse.gaussian",
+          fam = c("gaussian", "binomial", "Gamma", "inverse.gaussian",
                     "poisson", "quasi", "quasibinomial", "quasipoisson",
                     "beta", "ordinal"),
           link = c("logit", "probit", "cloglog", "cauchit", "loglog",
